@@ -1,13 +1,11 @@
 import { useState } from "react";
-
-const NewEntryModal = ({ onClose }) => {
+const NewEntriesModal = ({ onClose }) => {
   const [form, setForm] = useState({
     title: "",
     date: "",
     content: "",
     image: null,
   });
-
   const handleChange = (e) => {
     if (e.target.name === "image") {
       setForm({
@@ -21,7 +19,6 @@ const NewEntryModal = ({ onClose }) => {
       });
     }
   };
-
   const handleSave = () => {
     const notes = JSON.parse(localStorage.getItem("notebookNotes")) || []; // Retrieve existing notes or initialize as empty array
     const newNote = { ...form, image: null }; // Create new note without the file object
@@ -29,29 +26,31 @@ const NewEntryModal = ({ onClose }) => {
     if (form.image) {
       const reader = new FileReader();
       reader.onload = () => {
-        newNote.image = reader.result; // Save image as a data URL
+        const imageUrl = reader.result; // This is a data URL
+        // Create a URL object for the image
+        const urlObject = URL.createObjectURL(form.image);
+        // Update the note with the URL object
+        newNote.image = urlObject; // Store only the URL object reference
         notes.unshift(newNote); // Add new note to the array
         localStorage.setItem("notebookNotes", JSON.stringify(notes)); // Save updated notes array to local storage
-        console.log("Image saved to local storage:", reader.result); // Log the data URL
+        console.log("Image URL object saved to local storage:", urlObject); // Log the URL object
       };
       reader.readAsDataURL(form.image); // Convert file to data URL
     } else {
       notes.unshift(newNote); // Add new note to the array
       localStorage.setItem("notebookNotes", JSON.stringify(notes)); // Save updated notes array to local storage
     }
-
     // Log the data to the console
     console.log("Saving note with data:");
     console.log("Title:", form.title);
     console.log("Date:", form.date);
     console.log("Content:", form.content);
     console.log(
-      "Image:",
+      "Image URL:",
       form.image ? URL.createObjectURL(form.image) : "No image"
     );
     onClose(); // Close the modal after saving
   };
-
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-6 border-2 border-gray-300 shadow-lg max-w-2xl w-full">
@@ -121,5 +120,4 @@ const NewEntryModal = ({ onClose }) => {
     </div>
   );
 };
-
-export default NewEntryModal;
+export default NewEntriesModal;
