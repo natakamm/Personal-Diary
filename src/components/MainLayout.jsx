@@ -9,7 +9,7 @@ const MainLayout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const storedEntries = localStorage.getItem("storage");
+    const storedEntries = localStorage.getItem("notebookNotes");
     storedEntries ? JSON.parse(storedEntries) : [];
     setEntries(storedEntries);
   }, []);
