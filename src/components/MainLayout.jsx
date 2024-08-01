@@ -7,6 +7,7 @@ import NewEntryModal from "./NewEntryModal";
 const MainLayout = () => {
   const [entries, setEntries] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEntryModalOpen, setIsEntryModalOpen] = useState(false);
 
   useEffect(() => {
     const storedEntries = localStorage.getItem("notebookNotes");
@@ -16,6 +17,9 @@ const MainLayout = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const openEntryModal = () => setIsEntryModalOpen(true);
+  const closeEntryModal = () => setIsEntryModalOpen(false);
 
   return (
     <div>
