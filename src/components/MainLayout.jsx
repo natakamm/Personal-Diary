@@ -10,8 +10,8 @@ const MainLayout = () => {
 
   useEffect(() => {
     const storedEntries = localStorage.getItem("notebookNotes");
-    storedEntries ? JSON.parse(storedEntries) : [];
-    setEntries(storedEntries);
+    const parsedEntries = storedEntries ? JSON.parse(storedEntries) : [];
+    setEntries(parsedEntries);
   }, []);
 
   const openModal = () => setIsModalOpen(true);
@@ -21,13 +21,13 @@ const MainLayout = () => {
     <div>
       <Header />
       <div>Here go all entries</div>;
-      {/*<div>
-       {entries.length > 0 ? (
-          entries.map((entry) => <Card entry={entry} key={entry.title} />)
+      <div>
+        {entries.length > 0 ? (
+          entries.map((entry, index) => <Card entry={entry} key={index} />)
         ) : (
           <div>No entries available.</div>
         )}
-      </div>*/}
+      </div>
       <div className="App">
         {/* Button to open the modal */}
         <div className="flex justify-center items-center min-h-screen">

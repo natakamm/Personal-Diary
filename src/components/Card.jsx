@@ -1,4 +1,4 @@
-const Card = () => {
+const Card = ({ entry }) => {
   //function to show modal
   return <div>Card</div>;
 };
