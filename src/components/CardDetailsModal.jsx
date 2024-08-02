@@ -4,41 +4,39 @@ const CardDetailsModal = ({ entry, closeModal }) => {
   if (!entry) return null;
 
   return (
-    <div className="bg-white p-6 mx-auto mt-10 border-2 border-gray-300 shadow-lg max-w-2xl">
-      <dialog id="my_modal_1" className="modal" open>
-        <div className="modal-box bg-white">
-          <div className="flex flex-col h-full">
-            <div className="flex items-center border-b-2 border-gray-300 pb-2 mb-4">
-              <div className="flex-1">
-                <h3 className="font-bold text-lg">{entry.title}</h3>
-              </div>
-
-              <div className="text-gray-500">
-                <span>{entry.date}</span>
-              </div>
-            </div>
+    <dialog id="my_modal_1" className="modal" open>
+      <div className="modal-box bg-white">
+        <div className="flex flex-col h-full">
+          <div className="flex items-center border-b-2 border-gray-300 pb-2 mb-4">
             <div className="flex-1">
-              <textarea
-                readOnly={true}
-                className="w-full h-full border-none outline-none p-4 bg-gray-100 rounded-lg resize-none notebook-textarea"
-                rows="15"
-              >
-                {entry.content}
-              </textarea>
+              <h3 className="font-bold text-lg">{entry.title}</h3>
+            </div>
+
+            <div className="text-gray-500">
+              <span>{entry.date}</span>
             </div>
           </div>
-
-          <div className="modal-action ">
-            <button
-              className="bg-primary rounded-full px-4 py-2 flex font-bold "
-              onClick={closeModal}
+          <div className="flex-1">
+            <textarea
+              readOnly={true}
+              className="w-full h-full border-none outline-none p-4 bg-gray-100 rounded-lg resize-none notebook-textarea"
+              rows="15"
             >
-              x
-            </button>
+              {entry.content}
+            </textarea>
           </div>
         </div>
-      </dialog>
-    </div>
+
+        <div className="modal-action ">
+          <button
+            className="bg-primary rounded-full px-4 py-2 flex font-bold "
+            onClick={closeModal}
+          >
+            x
+          </button>
+        </div>
+      </div>
+    </dialog>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const NewEntriesModal = ({ onClose }) => {
   const [form, setForm] = useState({
@@ -7,6 +7,14 @@ const NewEntriesModal = ({ onClose }) => {
     content: "",
     image: null,
   });
+
+  useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
+    setForm((prevForm) => ({
+      ...prevForm,
+      date: today,
+    }));
+  }, []);
 
   const handleChange = (e) => {
     if (e.target.name === "image") {

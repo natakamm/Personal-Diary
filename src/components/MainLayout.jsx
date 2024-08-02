@@ -13,11 +13,14 @@ const MainLayout = () => {
   //if we do !selectedEntry while its null, then its a falsy and the modal will not be
   const [selectedEntry, setSelectedEntry] = useState(null);
 
+  const today = new Date().toISOString().split("T")[0];
+  const existingDate = entries.find((entry) => entry.date === today);
+
   useEffect(() => {
     const storedEntries = localStorage.getItem("notebookNotes");
     const parsedEntries = storedEntries ? JSON.parse(storedEntries) : [];
     setEntries(parsedEntries);
-  }, [entries]);
+  }, []);
 
   //For the new Entry FORM
   const openModal = () => setIsModalOpen(true);
@@ -51,7 +54,7 @@ const MainLayout = () => {
       </div>
       <div className="App relative">
         {/* Button to open the modal */}
-        <div className="flex justify-center items-center min-h-screen">
+        <div className="flex justify-center items-center">
           <button
             onClick={openModal}
             className="bg-neutral text-white py-2 px-4 rounded font-bold fixed bottom-12 right-8"
@@ -59,7 +62,8 @@ const MainLayout = () => {
             Add New Note
           </button>
         </div>
-        {/* Conditionally render the modal based on state */}
+        {/* Conditionally render the modal based on state !existingDate &&  */}
+
         {isModalOpen && <NewEntryModal onClose={closeModal} />}
         {selectedEntry && (
           <CardDetailsModal
