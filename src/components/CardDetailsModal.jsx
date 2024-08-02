@@ -17,6 +17,12 @@ const CardDetailsModal = ({ entry, closeModal }) => {
             </div>
           </div>
           <div className="flex-1">
+            <img
+              src={entry.image}
+              alt={entry.title}
+              className="mb-3 rounded-xl w-full"
+            />
+
             <textarea
               readOnly={true}
               className="w-full h-full border-none outline-none p-4 bg-gray-100 rounded-lg resize-none notebook-textarea"
