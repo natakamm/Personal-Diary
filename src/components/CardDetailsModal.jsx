@@ -1,4 +1,5 @@
 import "../App.css";
+import defaultImage from "../assets/Book Yellow.webp";
 const CardDetailsModal = ({ entry, closeModal }) => {
   //when entry (props for selectedEntry value is false, then it shows nothing. It is false when its null, undefined, 0, NaN, "" (empty string), and false
   if (!entry) return null;
@@ -18,9 +19,9 @@ const CardDetailsModal = ({ entry, closeModal }) => {
           </div>
           <div className="flex-1">
             <img
-              src={entry.image}
+              src={entry.image || defaultImage}
               alt={entry.title}
-              className="mb-3 rounded-xl w-full"
+              className="mb-5 rounded-xl w-full bg-gray-300 "
             />
 
             <textarea

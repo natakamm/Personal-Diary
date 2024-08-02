@@ -35,11 +35,11 @@ const MainLayout = () => {
   return (
     <div style={CutiveMono}>
       <Header />
-      <div className="mx-20">
+      <div className="flex flex-col items-center">
         <div>
           <h2 className="text-3xl">My Entries</h2>
         </div>
-        <div className="flex flex-wrap gap-8 my-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 my-8 w-full max-w-6xl">
           {entries.length > 0 ? (
             entries.map((entry, index) => (
               <Card entry={entry} key={index} onOpenModal={openEntryModal} />
