@@ -16,7 +16,7 @@ const MainLayout = () => {
     const storedEntries = localStorage.getItem("notebookNotes");
     const parsedEntries = storedEntries ? JSON.parse(storedEntries) : [];
     setEntries(parsedEntries);
-  }, []);
+  }, [entries]);
 
   //For the new Entry FORM
   const openModal = () => setIsModalOpen(true);
