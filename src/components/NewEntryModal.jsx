@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const NewEntriesModal = ({ onClose }) => {
   const [form, setForm] = useState({
     title: "",
@@ -6,6 +7,7 @@ const NewEntriesModal = ({ onClose }) => {
     content: "",
     image: null,
   });
+
   const handleChange = (e) => {
     if (e.target.name === "image") {
       setForm({
@@ -19,7 +21,13 @@ const NewEntriesModal = ({ onClose }) => {
       });
     }
   };
+
   const handleSave = () => {
+    if (!form.title || !form.content || !form.date) {
+      alert("Please fill in all required fields.");
+      return; // Exit the function if validation fails
+    }
+
     const notes = JSON.parse(localStorage.getItem("notebookNotes")) || []; // Retrieve existing notes or initialize as empty array
     const newNote = { ...form, image: null }; // Create new note without the file object
     // Handle image separately
@@ -51,6 +59,7 @@ const NewEntriesModal = ({ onClose }) => {
     );
     onClose(); // Close the modal after saving
   };
+
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-6 border-2 border-gray-300 shadow-lg max-w-2xl w-full">
@@ -120,4 +129,5 @@ const NewEntriesModal = ({ onClose }) => {
     </div>
   );
 };
+
 export default NewEntriesModal;
