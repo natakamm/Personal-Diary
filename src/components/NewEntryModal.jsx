@@ -85,13 +85,23 @@ const NewEntriesModal = ({ onClose }) => {
           </label>
         </div>
         <div className="mb-4">
-          <label className="block mb-2">
+          {/*<label className="block mb-2">
             Date:
             <input
               type="date"
               name="date"
               value={form.date}
               onChange={handleChange}
+              className="w-full p-2 border rounded"
+            />
+          </label> */}
+          <label className="block mb-2">
+            Date:
+            <input
+              type="text"
+              name="date"
+              value={form.date}
+              readonly
               className="w-full p-2 border rounded"
             />
           </label>
