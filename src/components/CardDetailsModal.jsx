@@ -7,6 +7,7 @@ const CardDetailsModal = ({ entry, closeModal }) => {
       <dialog id="my_modal_1" className="modal" open>
         <div className="modal-box">
           <h3 className="font-bold text-lg">{entry.title}</h3>
+          <p>{entry.date}</p>
           <p className="py-4">{entry.content}</p>
           <div className="modal-action">
             <button className="btn" onClick={closeModal}>
