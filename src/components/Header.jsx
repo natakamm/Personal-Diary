@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div>
       <div
-        className="px-10 py-2 navbar bg-accent text-primary-content flex justify-between"
+        className="px-10 py-2 mb-10 navbar bg-accent text-primary-content flex justify-between"
         style={CutiveMono}
       >
         <div className="flex gap-4">
