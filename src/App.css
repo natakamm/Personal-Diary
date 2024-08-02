@@ -1,0 +1,14 @@
+.notebook-textarea {
+  background: repeating-linear-gradient(
+    0deg,
+    #ffffff,
+    #ffffff 1px,
+    #e0e0e0 2px,
+    #e0e0e0 16px
+  );
+  font-family: "Courier New", Courier, monospace;
+  @apply p-2 rounded-lg resize-none; /* Reduced padding for alignment */
+  line-height: 1; /* Adjust line-height to better match line spacing */
+  height: calc(100% - 16px); /* Adjust height to fit padding and lines */
+  /*background-size: 100% 24px; /* Ensure background lines match the line-height */
+}
