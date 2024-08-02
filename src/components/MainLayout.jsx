@@ -51,7 +51,7 @@ const MainLayout = () => {
       </div>
       <div className="App relative">
         {/* Button to open the modal */}
-        <div className="flex justify-center items-center min-h-screen">
+        <div className="flex justify-center items-center ">
           <button
             onClick={openModal}
             className="bg-neutral text-white py-2 px-4 rounded font-bold fixed bottom-12 right-8"
