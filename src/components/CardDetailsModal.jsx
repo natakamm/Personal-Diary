@@ -27,9 +27,8 @@ const CardDetailsModal = ({ entry, closeModal }) => {
               readOnly={true}
               className="w-full h-full border-none outline-none p-4 bg-gray-100 rounded-lg resize-none notebook-textarea"
               rows="15"
-            >
-              {entry.content}
-            </textarea>
+              defaultValue={entry.content}
+            ></textarea>
           </div>
         </div>
 
