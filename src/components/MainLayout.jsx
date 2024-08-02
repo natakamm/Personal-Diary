@@ -4,6 +4,7 @@ import { useState } from "react";
 import Card from "./Card";
 import NewEntryModal from "./NewEntryModal";
 import CardDetailsModal from "./CardDetailsModal";
+import { CutiveMono } from "./FontFamily";
 
 const MainLayout = () => {
   const [entries, setEntries] = useState([]);
@@ -16,7 +17,7 @@ const MainLayout = () => {
     const storedEntries = localStorage.getItem("notebookNotes");
     const parsedEntries = storedEntries ? JSON.parse(storedEntries) : [];
     setEntries(parsedEntries);
-  }, []);
+  }, [entries]);
 
   //For the new Entry FORM
   const openModal = () => setIsModalOpen(true);
@@ -32,24 +33,28 @@ const MainLayout = () => {
   };
 
   return (
-    <div>
+    <div style={CutiveMono}>
       <Header />
-      <div>Here go all entries</div>
-      <div>
-        {entries.length > 0 ? (
-          entries.map((entry, index) => (
-            <Card entry={entry} key={index} onOpenModal={openEntryModal} />
-          ))
-        ) : (
-          <div>No entries available.</div>
-        )}
+      <div className="mx-20">
+        <div>
+          <h2 className="text-3xl">My Entries</h2>
+        </div>
+        <div className="flex flex-wrap gap-8 my-8">
+          {entries.length > 0 ? (
+            entries.map((entry, index) => (
+              <Card entry={entry} key={index} onOpenModal={openEntryModal} />
+            ))
+          ) : (
+            <div>No entries available.</div>
+          )}
+        </div>
       </div>
-      <div className="App">
+      <div className="App relative">
         {/* Button to open the modal */}
         <div className="flex justify-center items-center min-h-screen">
           <button
             onClick={openModal}
-            className="bg-blue-500 text-white py-2 px-4 rounded"
+            className="bg-neutral text-white py-2 px-4 rounded font-bold fixed bottom-12 right-8"
           >
             Add New Note
           </button>
