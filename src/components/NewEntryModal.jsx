@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const NewEntriesModal = ({ onClose }) => {
+const NewEntriesModal = ({ onClose, onAddEntry }) => {
   const [form, setForm] = useState({
     title: "",
     date: "",
@@ -36,7 +36,6 @@ const NewEntriesModal = ({ onClose }) => {
       return; // Exit the function if validation fails
     }
 
-    const notes = JSON.parse(localStorage.getItem("notebookNotes")) || []; // Retrieve existing notes or initialize as empty array
     const newNote = { ...form, image: null }; // Create new note without the file object
     // Handle image separately
     if (form.image) {
@@ -47,25 +46,14 @@ const NewEntriesModal = ({ onClose }) => {
         const urlObject = URL.createObjectURL(form.image);
         // Update the note with the URL object
         newNote.image = urlObject; // Store only the URL object reference
-        notes.unshift(newNote); // Add new note to the array
-        localStorage.setItem("notebookNotes", JSON.stringify(notes)); // Save updated notes array to local storage
-        console.log("Image URL object saved to local storage:", urlObject); // Log the URL object
+        onAddEntry(newNote);
+        onClose();
       };
       reader.readAsDataURL(form.image); // Convert file to data URL
     } else {
-      notes.unshift(newNote); // Add new note to the array
-      localStorage.setItem("notebookNotes", JSON.stringify(notes)); // Save updated notes array to local storage
+      onAddEntry(newNote);
+      onClose(); // Save updated notes array to local storage
     }
-    // Log the data to the console
-    console.log("Saving note with data:");
-    console.log("Title:", form.title);
-    console.log("Date:", form.date);
-    console.log("Content:", form.content);
-    console.log(
-      "Image URL:",
-      form.image ? URL.createObjectURL(form.image) : "No image"
-    );
-    onClose(); // Close the modal after saving
   };
 
   return (
@@ -101,7 +89,7 @@ const NewEntriesModal = ({ onClose }) => {
               type="text"
               name="date"
               value={form.date}
-              readonly
+              onChange={handleChange}
               className="w-full p-2 border rounded"
             />
           </label>

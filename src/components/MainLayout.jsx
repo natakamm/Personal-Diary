@@ -19,6 +19,12 @@ const MainLayout = () => {
     setEntries(parsedEntries);
   }, []);
 
+  const addEntry = (entry) => {
+    const updatedEntries = [entry, ...entries];
+    setEntries(updatedEntries);
+    localStorage.setItem("notebookNotes", JSON.stringify(updatedEntries));
+  };
+
   //For the new Entry FORM
   //const openModal = () => {
   //const today = new Date().toISOString().split("T")[0];
@@ -72,7 +78,9 @@ const MainLayout = () => {
         </div>
         {/* Conditionally render the modal based on state */}
 
-        {isModalOpen && <NewEntryModal onClose={closeModal} />}
+        {isModalOpen && (
+          <NewEntryModal onClose={closeModal} onAddEntry={addEntry} />
+        )}
         {selectedEntry && (
           <CardDetailsModal
             entry={selectedEntry}
