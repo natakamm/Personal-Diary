@@ -13,9 +13,6 @@ const MainLayout = () => {
   //if we do !selectedEntry while its null, then its a falsy and the modal will not be
   const [selectedEntry, setSelectedEntry] = useState(null);
 
-  const today = new Date().toISOString().split("T")[0];
-  const existingDate = entries.find((entry) => entry.date === today);
-
   useEffect(() => {
     const storedEntries = localStorage.getItem("notebookNotes");
     const parsedEntries = storedEntries ? JSON.parse(storedEntries) : [];
@@ -23,6 +20,17 @@ const MainLayout = () => {
   }, []);
 
   //For the new Entry FORM
+  //const openModal = () => {
+  //const today = new Date().toISOString().split("T")[0];
+  // const existingDate = entries.find((entry) => entry.date === today);
+
+  // if (!existingDate) {
+  //   setIsModalOpen(true);
+  // } else {
+  //   alert("An entry for today already exists. Please tray again tomorrow");
+  // }
+  // };
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -62,7 +70,7 @@ const MainLayout = () => {
             Add New Note
           </button>
         </div>
-        {/* Conditionally render the modal based on state !existingDate &&  */}
+        {/* Conditionally render the modal based on state */}
 
         {isModalOpen && <NewEntryModal onClose={closeModal} />}
         {selectedEntry && (
