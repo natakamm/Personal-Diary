@@ -1,8 +1,16 @@
+import React, { useEffect, useState } from "react";
 import { CutiveMono } from "./FontFamily";
 
 const Header = () => {
-  const currentDate = new Date().toLocaleString();
+  const [currentDate, setCurrentDate] = useState(new Date().toLocaleString());
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDate(new Date().toLocaleString());
+    }, 1000);
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
   return (
     <div>
       <div
