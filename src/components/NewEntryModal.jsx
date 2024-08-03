@@ -88,8 +88,8 @@ const NewEntriesModal = ({ onClose, onAddEntry }) => {
             <input
               type="text"
               name="date"
+              readonly
               value={form.date}
-              onChange={handleChange}
               className="w-full p-2 border rounded"
             />
           </label>
