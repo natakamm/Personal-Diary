@@ -11,6 +11,7 @@ const Header = () => {
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, []);
+
   return (
     <div>
       <div
