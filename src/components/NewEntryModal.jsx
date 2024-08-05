@@ -120,13 +120,13 @@ const NewEntriesModal = ({ onClose, onAddEntry }) => {
         <div className="flex justify-end gap-2">
           <button
             onClick={handleSave}
-            className="bg-blue-500 text-white py-2 px-4 rounded"
+            className="bg-secondary text-black py-2 px-4 rounded"
           >
             Save
           </button>
           <button
             onClick={onClose}
-            className="bg-red-500 text-white py-2 px-4 rounded"
+            className="bg-primary text-black py-2 px-4 rounded"
           >
             Cancel
           </button>
