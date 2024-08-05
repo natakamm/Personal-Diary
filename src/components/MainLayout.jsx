@@ -17,9 +17,26 @@ const MainLayout = () => {
     const storedEntries = localStorage.getItem("notebookNotes");
     const parsedEntries = storedEntries ? JSON.parse(storedEntries) : [];
     setEntries(parsedEntries);
-  }, [entries]);
+  }, []);
+
+  const addEntry = (entry) => {
+    const updatedEntries = [entry, ...entries];
+    setEntries(updatedEntries);
+    localStorage.setItem("notebookNotes", JSON.stringify(updatedEntries));
+  };
 
   //For the new Entry FORM
+  //const openModal = () => {
+  //const today = new Date().toISOString().split("T")[0];
+  // const existingDate = entries.find((entry) => entry.date === today);
+
+  // if (!existingDate) {
+  //   setIsModalOpen(true);
+  // } else {
+  //   alert("An entry for today already exists. Please tray again tomorrow");
+  // }
+  // };
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -60,7 +77,10 @@ const MainLayout = () => {
           </button>
         </div>
         {/* Conditionally render the modal based on state */}
-        {isModalOpen && <NewEntryModal onClose={closeModal} />}
+
+        {isModalOpen && (
+          <NewEntryModal onClose={closeModal} onAddEntry={addEntry} />
+        )}
         {selectedEntry && (
           <CardDetailsModal
             entry={selectedEntry}
