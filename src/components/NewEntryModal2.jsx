@@ -17,17 +17,11 @@ const NewEntriesModal = ({ onClose, onAddEntry }) => {
   }, []);
 
   const handleChange = (e) => {
-    if (e.target.name === "image") {
-      setForm({
-        ...form,
-        image: e.target.files[0], // Store the file object
-      });
-    } else {
-      setForm({
-        ...form,
-        [e.target.name]: e.target.value,
-      });
-    }
+    const { name, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
   };
 
   const handleSave = () => {
@@ -36,24 +30,17 @@ const NewEntriesModal = ({ onClose, onAddEntry }) => {
       return; // Exit the function if validation fails
     }
 
-    const newNote = { ...form, image: null }; // Create new note without the file object
-    // Handle image separately
+    // Create new note with the form data
+    const newNote = { ...form };
+
+    // Handle image URL directly
     if (form.image) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const imageUrl = reader.result; // This is a data URL
-        // Create a URL object for the image
-        const urlObject = URL.createObjectURL(form.image);
-        // Update the note with the URL object
-        newNote.image = urlObject; // Store only the URL object reference
-        onAddEntry(newNote);
-        onClose();
-      };
-      reader.readAsDataURL(form.image); // Convert file to data URL
+      newNote.image = form.image; // Use the image URL directly
     } else {
-      onAddEntry(newNote);
-      onClose(); // Save updated notes array to local storage
+      newNote.image = null; // Ensure image is null if not provided
     }
+    onAddEntry(newNote);
+    onClose(); // Save updated notes array to local storage
   };
 
   return (
