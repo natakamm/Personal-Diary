@@ -5,7 +5,7 @@ const CardDetailsModal = ({ entry, closeModal }) => {
   if (!entry) return null;
 
   return (
-    <dialog id="my_modal_1" className="modal" open>
+    <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="modal-box bg-white">
         <div className="flex flex-col h-full">
           <div className="flex items-center border-b-2 border-gray-300 pb-2 mb-4">
@@ -42,7 +42,7 @@ const CardDetailsModal = ({ entry, closeModal }) => {
           </button>
         </div>
       </div>
-    </dialog>
+    </div>
   );
 };
 
