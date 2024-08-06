@@ -20,7 +20,7 @@ const Header = () => {
       >
         <div className="flex gap-4">
           <figure>
-            <img src="public\Book Yellow.webp" alt="logo" className="h-20" />
+            <img src="/Book Yellow.webp" alt="logo" className="h-20" />
           </figure>
           <h1 className="text-xl font-bold">My Personal Diary</h1>
         </div>
