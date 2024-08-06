@@ -2,7 +2,7 @@ import Header from "./Header";
 import { useEffect } from "react";
 import { useState } from "react";
 import Card from "./Card";
-import NewEntryModal from "./NewEntryModal";
+import NewEntryModal from "./NewEntryModal2";
 import CardDetailsModal from "./CardDetailsModal";
 import { CutiveMono } from "./FontFamily";
 
