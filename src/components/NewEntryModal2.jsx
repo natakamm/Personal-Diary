@@ -111,7 +111,8 @@ const NewEntriesModal = ({ onClose, onAddEntry }) => {
             <label className="block mb-2">
               Image:
               <input
-                type="file"
+                type="text"
+                placeholder="Image URL"
                 name="image"
                 onChange={handleChange}
                 className="w-full p-2 border-2 rounded"
