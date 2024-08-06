@@ -59,7 +59,7 @@ const NewEntriesModal = ({ onClose, onAddEntry }) => {
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-[url('/public/notebook.png')] bg-cover bg-center p-4  max-w-2xl w-full rounded-lg">
-        <form className="p-10 ml-5">
+        <div className="p-10 ml-5">
           <h2 className="text-xl font-bold mb-4">Create a New Note</h2>
           <div className="mb-4">
             <label className="block mb-2">
@@ -132,7 +132,7 @@ const NewEntriesModal = ({ onClose, onAddEntry }) => {
               Cancel
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
