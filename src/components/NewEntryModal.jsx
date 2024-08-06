@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const NewEntriesModal = ({ onClose, onSave }) => {
+const NewEntriesModal = ({ onClose, onAddEntry }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [image, setImage] = useState("");
@@ -9,7 +9,7 @@ const NewEntriesModal = ({ onClose, onSave }) => {
   const handleSubmit = () => {
     if (title && date && image && content) {
       const newEntry = { title, date, image, content };
-      onSave(newEntry);
+      onAddEntry(newEntry);
       onClose();
     } else {
       alert("Please fill in all fields");
@@ -69,7 +69,7 @@ const NewEntriesModal = ({ onClose, onSave }) => {
         <div className="mb-4"></div>
         <div className="flex justify-end gap-2">
           <button
-            onClick={handleSave}
+            onClick={handleSubmit}
             className="bg-secondary text-black py-2 px-4 rounded"
           >
             Save
