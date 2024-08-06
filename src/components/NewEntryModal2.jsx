@@ -22,7 +22,7 @@ const NewEntriesModal = ({ onClose, onAddEntry }) => {
       ...prevForm,
       [name]: value,
     }));
-  };
+ };
 
   const handleSave = () => {
     if (!form.title || !form.content || !form.date) {
