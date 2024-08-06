@@ -1,4 +1,4 @@
-import defaultImage from "../assets/Book Yellow.webp";
+import defaultImage from "/Book Yellow.webp";
 
 const Card = ({ entry, onOpenModal }) => {
   //function to show modal

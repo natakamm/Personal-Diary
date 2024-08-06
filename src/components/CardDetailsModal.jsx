@@ -1,5 +1,5 @@
 import "../App.css";
-import defaultImage from "../assets/Book Yellow.webp";
+import defaultImage from "/Book Yellow.webp";
 const CardDetailsModal = ({ entry, closeModal }) => {
   //when entry (props for selectedEntry value is false, then it shows nothing. It is false when its null, undefined, 0, NaN, "" (empty string), and false
   if (!entry) return null;
